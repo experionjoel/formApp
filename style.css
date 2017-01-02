@@ -72,7 +72,7 @@ margin: 10px;
 #profile-op {
     border: 3px solid #828282;
     border-radius: 100%;
-    
+    display: none;
 }
 
 .profile_holder {

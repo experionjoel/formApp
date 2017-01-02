@@ -41,6 +41,7 @@ function readFile() {
       document.getElementById("profile-op").src = e.target.result;
       $("#profile-op").show();
       console.log("reached");
+      $("#profile").hide();
     };       
     FR.readAsDataURL( this.files[0] );
   }
