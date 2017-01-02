@@ -4,31 +4,28 @@
         
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-	    <link rel="stylesheet" href="style.css">
+	    <link rel="stylesheet" href="../style.css">
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="script.js"></script>
-
-         <link rel="icon" type="image/x-icon" href="favicon.png">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+        <script src="userDetail.js"></script>
 
         <title>
-            User-signup
+            User-details
         </title>
     </head>
     <body>
 
+    
     <div class="row">
         <div class = "container">
             <div class="row main">
                 <div>
                     <div class = "col-md-12 panel-title">
-                        <h1 class="title">User Registeration</h1>
-                        <h5 class="text">Do not leave any mandatory fields blank.</h5>
+                        <h1 class="title topContent">User Detail</h1>
+                        <h5 class="text topContent greeting">Hey <span class="username"></span>, please review your credentials.</h5>
                     </div>
                 </div>
 
@@ -37,7 +34,7 @@
     <!--
     CHANGE -->
     <hr />
-    <form>
+    <form id="target">
             <div class = "row row1">
                 <div class="col-md-8 col-md-12">
                     <div class="row row_basic">
@@ -45,7 +42,7 @@
                             <span><b>First Name</b></span>
                         </div>
                         <div class = "col-md-6">
-                            <input type="text" required class="form-control" name="firstname" id="firstname"  placeholder="Enter first Name"/ maxlength="50">
+                            <input type="text" required class="form-control" name="firstname" id="firstname"  placeholder="Enter first Name"/>
                         </div>
                     </div>
                     <div class="row row_basic">
@@ -53,24 +50,21 @@
                             <span><b>Last Name</b></span>
                         </div>
                         <div class = "col-md-6">
-                            <input type="text" required class="form-control" name="lastname" id="lastname"  placeholder="Enter last Name"/ maxlength="50">
+                            <input type="text" required class="form-control" name="lastname" id="lastname"  placeholder="Enter last Name"/>
                         </div>
                     </div>
                     <div class="row row_basic">
                         <div class = "col-md-6 personal-label-adjust">
-                            <span><b>Date of Birth</b></span>
+                            <span><b>Age</b></span>
                         </div>
                         <div class = "col-md-6">
                             <!--<input type="date text" required class="form-control" name="name" id="dob"  placeholder="Enter DoB"/>-->
-                            <div class="input-group ">
-			                  <input type="text" class="form-control" id="DOB" required placeholder="Enter your D.O.B.">
-			                  <span class="input-group-addon">
-			                      <span class="glyphicon glyphicon-calendar"></span>
-			                  </span>
+                            <div class="">
+			                  <input type="text" class="form-control" id="age" required placeholder="">
 			              </div>
                         </div>
                     </div>
-                    <div class="row row_basic">
+<!--                     <div class="row row_basic">
                         <div class = "col-md-6 personal-label-adjust"><b>Marital Status</b></div>
                         <div class = "col-md-6">
                             <div class="form-group">
@@ -81,21 +75,12 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
 
                 <div class="col-md-4 col-sm-12 img text-center profile_holder">
-                    <div class="profimg">
-                        <input id="profimage" type='file'>
-                    </div>
-
-                    <input type='file' id="imgInp"  />
-
-                    <img id="profile-op" width="150px" height=auto alt="profile-picture-op" class="img-circle-op" src="">
-                    <button class="uploadBtn" onclick="">
-                        <img id="profile" width="150px" height=auto alt="profile-picture" class="img-circle" src="https://cdn3.iconfinder.com/data/icons/essentials-vol-1-1/512/User-2-512.png">
-                    </button>
+                    <a href="#"><img id="profile" width="150px" height=auto alt="profile-picture" class="img-circle" src="https://cdn3.iconfinder.com/data/icons/essentials-vol-1-1/512/User-2-512.png"></a>
                 </div>
             </div>
 
@@ -122,6 +107,23 @@
                 </div>
             </div>
             </div>
+
+    <!-- CONTACT DETAILS -->
+    <hr />
+            <div class = "row row1">
+                <div class = "col-md-4"><b>Contact Details</b></div>
+                <div class="col-md-4">Email ID</div>
+                <div class="col-md-4">
+                <input type="email" class="form-control" name="emailID" id="emailID"  placeholder="Enter email"/>
+                </div>
+            </div>
+            <div class = "row row1">
+                <div class = "col-md-4"></div>
+                <div class="col-md-4">Mobile</div>
+                <div class="col-md-4">
+                <input type="number" required class="form-control" name="mobile" id="mobile"  placeholder="Enter mobile number"/>
+                </div>
+            </div>
     <hr>
     <!--FAMILY DETAILS-->
         
@@ -131,7 +133,7 @@
                             <span>Father's Name</b></span>
                         </div>
                         <div class = "col-md-4">
-                            <input type="text" required class="form-control" name="fathername" id="fathername"  placeholder="Enter Father's Name"/ maxlength="50">
+                            <input type="text" required class="form-control" name="fathername" id="fathername"  placeholder="Enter Father's Name"/>
                         </div>
                     </div>
                    <div class="row row1">
@@ -140,7 +142,16 @@
                             <span>Mother's name</span>
                         </div>
                         <div class = "col-md-4">
-                            <input type="text" required class="form-control" name="mothername" id="mothername"  placeholder="Enter Mother's name"/ maxlength="50">
+                            <input type="text" required class="form-control" name="mothername" id="mothername"  placeholder="Enter Mother's name"/>
+                        </div>
+                    </div>
+                   <div class="row row1">
+                       <div class = "col-md-4"></div>
+                        <div class = "col-md-4">
+                            <span>Marital Status</span>
+                        </div>
+                        <div class = "col-md-4">
+                            <input type="text" required class="form-control" name="marital_status" id="marital_status"/>
                         </div>
                     </div>
                    <div class="row row1" id="spousedetails">
@@ -149,26 +160,9 @@
                             <span>Spouse's Name</span>
                         </div>
                         <div class = "col-md-4">
-                            <input type="text" required class="form-control" name="spousename" id="spousename"  placeholder="Enter spouse's name"/ maxlength="50">
+                            <input type="text" required class="form-control" name="spousename" id="spousename"  placeholder="Enter spouse's name"/>
                         </div>
                     </div>
-
-    <!-- CONTACT DETAILS -->
-    <hr />
-            <div class = "row row1">
-                <div class = "col-md-4"><b>Contact Details</b></div>
-                <div class="col-md-4">Email ID</div>
-                <div class="col-md-4">
-                <input type="email" class="form-control" name="emailID" id="emailID" maxlength="100" placeholder="Enter email"/>
-                </div>
-            </div>
-            <div class = "row row1">
-                <div class = "col-md-4"></div>
-                <div class="col-md-4">Mobile</div>
-                <div class="col-md-4">
-                <input type="number" required class="form-control" name="mobile" id="mobile"  placeholder="+91 - " maxlength="10" pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" />
-                </div>
-            </div>
 
 
     <!-- OTHER DETAILS -->
@@ -178,27 +172,18 @@
                 <div class = "col-md-4"><b>Professional Details</b></div>
                 <div class="col-md-4">Company</div>
                 <div class="col-md-4">
-                <input type="text" class="form-control" name="company" id="company"  placeholder="Enter Company name"/ maxlength="50">
+                <input type="text" class="form-control" name="company" id="company"  placeholder="Enter Company name"/>
                 </div>
             </div>
             <div class = "row row1">
                 <div class = "col-md-4"></div>
                 <div class="col-md-4">Designation</div>
                 <div class="col-md-4">
-                <input type="text" required class="form-control" name="desig" id="desig"  placeholder="Enter designation"/ maxlength="50">
+                <input type="text" required class="form-control" name="desig" id="desig"  placeholder="Enter designation"/>
                 </div>
             </div>
 
     <hr />
-
-        <div class="row row1">
-            <div class="form-group col-md-6">
-                <button type="submit" class="btn btn-primary btn-block login-button btn-custom" id="save">Register</button>
-            </div>
-            <div class="form-group col-md-6">
-                <button type="reset" class="btn btn-primary btn-block login-button btn-custom">Reset</button>
-            </div>
-        </div>
 
         </form>
 
