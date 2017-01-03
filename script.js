@@ -7,7 +7,6 @@
   var temp = {};
   var imgStore = new Image();
   var tempArray = [];
-  // (new Date(startDt).getTime() > new Date(endDt).getTime())
   $('#myImg').hide();
 
   $('#DOB').datepicker(
@@ -36,24 +35,24 @@
             }
      }
 
-$(function () {
-    $(":file").change(function () {
-        if (this.files && this.files[0]) {
-            var reader = new FileReader();
-            reader.onload = imageIsLoaded;
-            reader.readAsDataURL(this.files[0]);
-        }
-        $('#myImg').show();
-        $("#profile").hide();
+    $(function () {
+        $(":file").change(function () {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = imageIsLoaded;
+                reader.readAsDataURL(this.files[0]);
+            }
+            $('#myImg').show();
+            $("#profile").hide();
+        });
     });
-});
 
 
-function imageIsLoaded(e) {
-    $('#myImg').attr('src', e.target.result);
-    console.log(e.target.result);
-    imgStore = e.target.result;
-};
+    function imageIsLoaded(e) {
+        $('#myImg').attr('src', e.target.result);
+        console.log(e.target.result);
+        imgStore = e.target.result;
+    };
 
     function ageValidator() {
       var tempdate = $('#DOB').val();
