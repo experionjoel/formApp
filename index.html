@@ -3,15 +3,23 @@
     <head>
         
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./cdn-Assets/bootstrap.min.css">
+
 	    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+        <link rel="stylesheet" href="./cdn-Assets/font-awesome.min.css">
+
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./cdn-Assets/jquery-ui.css">
 
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	    <link rel="stylesheet" href="style.css">
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="./cdn-Assets/jquery.min.js"></script>
+
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="./cdn-Assets/jquery-ui.js"></script>
+
         <script src="script.js"></script>
 
          <link rel="icon" type="image/x-icon" href="favicon.png">
@@ -19,6 +27,26 @@
         <title>
             User-signup
         </title>
+
+        <script>
+   function previewFile(){
+       var preview = document.querySelector('#profile-op'); //selects the query named img
+       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+       var reader  = new FileReader();
+
+       reader.onloadend = function () {
+           preview.src = reader.result;
+       }
+
+       if (file) {
+           reader.readAsDataURL(file); //reads the data as a URL
+       } else {
+           preview.src = "";
+       }
+  }
+
+  previewFile();  //calls the function named previewFile()
+  </script>
     </head>
     <body>
 
@@ -27,7 +55,7 @@
             <div class="row main">
                 <div>
                     <div class = "col-md-12 panel-title">
-                        <h1 class="title">User Registeration</h1>
+                        <h1 class="title">User Registration</h1>
                         <h5 class="text">Do not leave any mandatory fields blank.</h5>
                     </div>
                 </div>
@@ -45,7 +73,7 @@
                             <span><b>First Name</b></span>
                         </div>
                         <div class = "col-md-6">
-                            <input type="text" required class="form-control" name="firstname" id="firstname"  placeholder="Enter first Name"/ maxlength="50">
+                            <input type="text" required class="form-control" name="firstname" id="firstname"  placeholder="Enter first name"/ maxlength="50">
                         </div>
                     </div>
                     <div class="row row_basic">
@@ -53,7 +81,7 @@
                             <span><b>Last Name</b></span>
                         </div>
                         <div class = "col-md-6">
-                            <input type="text" required class="form-control" name="lastname" id="lastname"  placeholder="Enter last Name"/ maxlength="50">
+                            <input type="text" required class="form-control" name="lastname" id="lastname"  placeholder="Enter last name"/ maxlength="50">
                         </div>
                     </div>
                     <div class="row row_basic">
@@ -90,12 +118,23 @@
                         <input id="profimage" type='file'>
                     </div>
 
-                    <input type='file' id="imgInp"  />
+<!--                     <input type='file' id="imgInp" onchange="previewFile()" />
+                    <img id="profile-op" width="150px" height=auto alt="profile-picture-op" src=""> -->
 
-                    <img id="profile-op" width="150px" height=auto alt="profile-picture-op" class="img-circle-op" src="">
-                    <button class="uploadBtn" onclick="">
-                        <img id="profile" width="150px" height=auto alt="profile-picture" class="img-circle" src="https://cdn3.iconfinder.com/data/icons/essentials-vol-1-1/512/User-2-512.png">
-                    </button>
+
+                    <label class="btn-upload">
+                        <input id="profimage" type='file' onchange="encodeImageFileAsURL()" />
+                        <button class="btn">
+                            <a href="">
+                                <img id="profile" width="150px" height=auto alt="profile-picture" class="img-circle" src="./cdn-Assets/user.png">
+                                <img id="myImg" src="#" alt="your image" height="150px" width="auto" />
+                                <span class="msgholder"><h5 class="msg">Browse</h5></span>
+                            </a>
+                        </button>
+
+                            <!-- <img id="myImg" src="#" alt="your image" height="150px" width="auto" /> -->
+                    </label>    
+
                 </div>
             </div>
 
@@ -131,7 +170,7 @@
                             <span>Father's Name</b></span>
                         </div>
                         <div class = "col-md-4">
-                            <input type="text" required class="form-control" name="fathername" id="fathername"  placeholder="Enter Father's Name"/ maxlength="50">
+                            <input type="text" required class="form-control" name="fathername" id="fathername"  placeholder="Enter Father's name"/ maxlength="50">
                         </div>
                     </div>
                    <div class="row row1">
@@ -159,7 +198,7 @@
                 <div class = "col-md-4"><b>Contact Details</b></div>
                 <div class="col-md-4">Email ID</div>
                 <div class="col-md-4">
-                <input type="email" class="form-control" name="emailID" id="emailID" maxlength="100" placeholder="Enter email"/>
+                <input type="email" class="form-control" name="emailID" id="emailID" maxlength="100" placeholder="Enter email ID"/>
                 </div>
             </div>
             <div class = "row row1">

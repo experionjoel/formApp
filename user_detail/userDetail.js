@@ -4,7 +4,17 @@
     var flag = 0;
     IDarray = [];
   // (new Date(startDt).getTime() > new Date(endDt).getTime())
-    
+    var imgholder = new Image();
+
+    if (localStorage.getItem("profileImg") === null) {
+          $('#profile').show();
+          $('#profile-new').hide();
+    }
+    else {
+          imgholder.src = localStorage.getItem('profileImg');
+          $('#profile').hide();
+          $('#profile-new').attr('src', imgholder.src);   
+    }
 
     temp = [];
     tempObj = JSON.parse(localStorage.getItem('users'));

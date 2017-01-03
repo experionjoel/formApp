@@ -5,8 +5,10 @@
 	IDarray = [];
   var dob;
   var temp = {};
+  var imgStore = new Image();
   var tempArray = [];
   // (new Date(startDt).getTime() > new Date(endDt).getTime())
+  $('#myImg').hide();
 
   $('#DOB').datepicker(
 	{
@@ -34,41 +36,24 @@
             }
      }
 
-function readFile() {
-  if (this.files && this.files[0]) {
-    var FR= new FileReader();
-    FR.onload = function(e) {
-      document.getElementById("profile-op").src = e.target.result;
-      $("#profile-op").show();
-      console.log("reached");
-      $("#profile").hide();
-    };       
-    FR.readAsDataURL( this.files[0] );
-  }
-}
+$(function () {
+    $(":file").change(function () {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = imageIsLoaded;
+            reader.readAsDataURL(this.files[0]);
+        }
+        $('#myImg').show();
+        $("#profile").hide();
+    });
+});
 
-document.getElementById("profimage").addEventListener("change", readFile, false);
-//   function chooseFile() {
-//             if (this.files && this.files[0]) {
-//                 var FR = new FileReader();
-//                 FR.onload = function(e) {
-//                 document.getElementById("profile").src = e.target.result;
-//                 // document.getElementById("b64").innerHTML = e.target.result;
-//                 };       
-//                 FR.readAsDataURL( this.files[0] );
-//             }  
-//    }
 
-// IMAGE UPLOAD
-//   function uploadBtn() {
-//     $("#profimage").click( 
-        
-//              chooseFile()
-//             // document.getElementById("profimage").addEventListener("change", chooseFile, false)
-        
-//     );
-//   }
-//   document.getElementById("profimage").addEventListener("change", readFile, false);
+function imageIsLoaded(e) {
+    $('#myImg').attr('src', e.target.result);
+    console.log(e.target.result);
+    imgStore = e.target.result;
+};
 
     function ageValidator() {
       var tempdate = $('#DOB').val();
@@ -86,31 +71,30 @@ document.getElementById("profimage").addEventListener("change", readFile, false)
       }
     }
 
-                       function phonenumValidator(phoneNum)
-                        {
-                             var phoneno = /^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$/;
-                            if((phoneNum.match(phoneno)))
-                                 {
-                                     return true;
-                                  }
-                             else
-                                  {
-                                     alert("You have entered an invalid phone number !!");
-                                     return false;
-                                 }
-                        }
+    function phonenumValidator(phoneNum)
+     {
+          var phoneno = /^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$/;
+         if((phoneNum.match(phoneno)))
+              {
+                  return true;
+               }
+          else
+               {
+                  alert("You have entered an invalid phone number !!");
+                  return false;
+              }
+     }
 
-        function emailValidator(new_email) {
-                    var filter = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
-                        if (filter.test(new_email)) {
-                             return true;
-                        }
-                       else {
-                               alert("You have entered an invalid email ID !!");
-                               return false;
-                       }
-
-                   }
+    function emailValidator(new_email) {
+      var filter = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+         if (filter.test(new_email)) {
+              return true;
+         }
+        else {
+                alert("You have entered an invalid email ID !!");
+                return false;
+        }
+    }
 
     $("#marital_status").change(function () {
 
@@ -125,17 +109,61 @@ document.getElementById("profimage").addEventListener("change", readFile, false)
         }
         else {
              $("#spousedetails").show();
-        }
-        
+        }    
     });
-
-
 
     $("#marital_status").click(function(){
         if(checkSpouse())
            { $("spousedetails").hide(); }
     });
 
+    // PREVENTING INVALID CHARACTERS FOR INPUT FIELDS
+
+    $('#firstname').on('keypress', function (event) {
+        var regex = new RegExp("^[a-zA-Z]+$");
+        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if (!regex.test(key)) {
+        event.preventDefault();
+        return false;
+        }
+    });
+    $('#lastname').on('keypress', function (event) {
+        var regex = new RegExp("^[a-zA-Z]+$");
+        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if (!regex.test(key)) {
+        event.preventDefault();
+        return false;
+        }
+    });
+    $('#fathername').on('keypress', function (event) {
+        var regex = new RegExp("^[a-zA-Z]+$");
+        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if (!regex.test(key)) {
+        event.preventDefault();
+        return false;
+        }
+    });
+    $('#mothername').on('keypress', function (event) {
+        var regex = new RegExp("^[a-zA-Z]+$");
+        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if (!regex.test(key)) {
+        event.preventDefault();
+        return false;
+        }
+    });
+    $('#spousename').on('keypress', function (event) {
+        var regex = new RegExp("^[a-zA-Z]+$");
+        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if (!regex.test(key)) {
+        event.preventDefault();
+        return false;
+        }
+    });
+
+    // END OF VALIDATION - PREVENT SPECIAL CHARACTERS
+
+
+// REGISTER BUTTON CLICK
    $('#save').click(function(e)
    {
    		e.preventDefault();
@@ -220,6 +248,7 @@ document.getElementById("profimage").addEventListener("change", readFile, false)
                         tempArray = JSON.parse(localStorage.getItem('users'));
                         localStorage.clear();
                         localStorage.setItem('users', JSON.stringify(temp));
+                        localStorage.setItem('profileImg', imgStore);
                     }
         // REDIRECTING TO USER DETAIL PAGE
 
