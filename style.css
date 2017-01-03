@@ -126,25 +126,8 @@ padding-top: 20px;
     border: 0;
 }
 
-.msg {
-    color: #fff;
-    position: absolute;
-    text-shadow: 0px 1px 2px #222;
-    display: inline;
-    z-index: 1; 
-}
 
-.msgholder {
-       visibility: hidden;
-        position: absolute;
-        z-index: 1;
-        display: hidden;
-}
 
-.msgholder:hover {
-        visibility: visible;
-        display: block;
-}
 
 /*
 .btn-upload input[type=file] {
