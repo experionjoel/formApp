@@ -135,13 +135,15 @@ padding-top: 20px;
 }
 
 .msgholder {
-        display: none;
+       visibility: hidden;
         position: absolute;
         z-index: 1;
+        display: hidden;
 }
 
 .msgholder:hover {
-        display: inline;
+        visibility: visible;
+        display: block;
 }
 
 /*

@@ -28,25 +28,6 @@
             User-signup
         </title>
 
-        <script>
-   function previewFile(){
-       var preview = document.querySelector('#profile-op'); //selects the query named img
-       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
-       var reader  = new FileReader();
-
-       reader.onloadend = function () {
-           preview.src = reader.result;
-       }
-
-       if (file) {
-           reader.readAsDataURL(file); //reads the data as a URL
-       } else {
-           preview.src = "";
-       }
-  }
-
-  previewFile();  //calls the function named previewFile()
-  </script>
     </head>
     <body>
 
@@ -118,21 +99,16 @@
                         <input id="profimage" type='file'>
                     </div>
 
-<!--                     <input type='file' id="imgInp" onchange="previewFile()" />
-                    <img id="profile-op" width="150px" height=auto alt="profile-picture-op" src=""> -->
-
-
                     <label class="btn-upload">
                         <input id="profimage" type='file' onchange="encodeImageFileAsURL()" />
-                        <button class="btn">
+                        <button class="btn" title="Browse">
                             <a href="">
-                                <img id="profile" width="150px" height=auto alt="profile-picture" class="img-circle" src="./cdn-Assets/user.png">
-                                <img id="myImg" src="#" alt="your image" height="150px" width="auto" />
+                                <img id="profile" title="Browse" width="150px" height=auto alt="profile-picture" class="img-circle" src="./cdn-Assets/user.png">
+                                <img id="myImg" title="Browse" src="#" alt="your image" height="150px" width="auto" />
                                 <span class="msgholder"><h5 class="msg">Browse</h5></span>
                             </a>
                         </button>
 
-                            <!-- <img id="myImg" src="#" alt="your image" height="150px" width="auto" /> -->
                     </label>    
 
                 </div>

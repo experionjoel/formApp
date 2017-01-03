@@ -9,6 +9,7 @@
   var tempArray = [];
   $('#myImg').hide();
 
+  // DATEPICKER SETTINGS
   $('#DOB').datepicker(
 	{
       dateFormat: 'dd/mm/yy',
@@ -22,6 +23,7 @@
       maxDate: '+0d',
   });
 
+  //FUNCTION TO CHECK IF MARRIED
   function checkSpouse(latest) {
        	if($('#marital_status').val() === "Married")
             {
@@ -33,8 +35,9 @@
                 console.log("single");
                 return false;
             }
-     }
+     };
 
+  //IMAGE UPLOAD HANDLER FUNCTIONS
     $(function () {
         $(":file").change(function () {
             if (this.files && this.files[0]) {
@@ -47,13 +50,13 @@
         });
     });
 
-
     function imageIsLoaded(e) {
         $('#myImg').attr('src', e.target.result);
         console.log(e.target.result);
         imgStore = e.target.result;
     };
 
+  //FUNCTION TO VALIDATE AGE > 0
     function ageValidator() {
       var tempdate = $('#DOB').val();
       var today = new Date();
@@ -68,8 +71,9 @@
           alert("You have entered an invalid date !!");
           return false;
       }
-    }
+    };
 
+  //FUNCTION TO VALIDATE INDIAN PHONE NUMBER
     function phonenumValidator(phoneNum)
      {
           var phoneno = /^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$/;
@@ -83,7 +87,7 @@
                   return false;
               }
      }
-
+  //FUNCTION TO VALIDATE EMAIL
     function emailValidator(new_email) {
       var filter = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
          if (filter.test(new_email)) {
@@ -95,6 +99,7 @@
         }
     }
 
+// CONTROL OF DIV CONTAINING MARITAL STATUS FIELD
     $("#marital_status").change(function () {
 
         if ($(this).find(':selected').text() === 'Married') {
